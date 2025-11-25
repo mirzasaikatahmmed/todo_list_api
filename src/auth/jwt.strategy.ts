@@ -26,8 +26,8 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
 
     // strip sensitive fields (passwordHash) before attaching to request
     const obj = user.toObject ? user.toObject() : (user as any);
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const { passwordHash: _passwordHash, ...safeUser } = obj as any;
+
+    const { passwordHash: _passwordHash, ...safeUser } = obj;
     void _passwordHash;
     return safeUser;
   }
